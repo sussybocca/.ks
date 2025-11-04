@@ -1,0 +1,116 @@
+{
+  "name": "ks-vscode-extension",
+  "displayName": "KS Language",
+  "description": "VS Code extension for the KS programming language with custom commands, syntax highlighting, and integrated command menu.",
+  "version": "0.0.1",
+  "publisher": "william-isaiah-jones",
+  "author": {
+    "name": "William Isaiah Jones",
+    "email": "babyyodacutefry@hugg.store"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sussybocca/.ks"
+  },
+  "bugs": {
+    "email": "babyyodacutefry@gmail.com"
+  },
+  "homepage": "https://github.com/sussybocca/.ks#readme",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Programming Languages"],
+  "icon": "images/extension-icon.png",
+  "activationEvents": [
+    "onLanguage:ks",
+    "onCommand:ks.open",
+    "onCommand:ks.rename",
+    "onCommand:ks.export",
+    "onCommand:ks.delete",
+    "onCommand:ks.hide",
+    "onCommand:ks.unhide",
+    "onCommand:ks.run",
+    "onCommand:ks.checkFiles"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "ks",
+        "aliases": ["KS", "ks"],
+        "extensions": [".ks"],
+        "configuration": "./syntax/ks.tmLanguage.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ks",
+        "scopeName": "source.ks",
+        "path": "./syntax/ks.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      { "command": "ks.open", "title": "Open KS" },
+      { "command": "ks.rename", "title": "Rename KS" },
+      { "command": "ks.export", "title": "Export KS" },
+      { "command": "ks.delete", "title": "Delete KS" },
+      { "command": "ks.hide", "title": "Hide KS" },
+      { "command": "ks.unhide", "title": "Unhide KS" },
+      { "command": "ks.run", "title": "Run KS" },
+      { "command": "ks.checkFiles", "title": "Check KS Files" }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "ks.open",
+          "when": "resourceExtname == .ks",
+          "group": "navigation@1"
+        },
+        {
+          "command": "ks.run",
+          "when": "resourceExtname == .ks",
+          "group": "2_run"
+        },
+        {
+          "command": "ks.export",
+          "when": "resourceExtname == .ks",
+          "group": "3_export"
+        },
+        {
+          "command": "ks.delete",
+          "when": "resourceExtname == .ks",
+          "group": "4_edit"
+        },
+        {
+          "command": "ks.hide",
+          "when": "resourceExtname == .ks",
+          "group": "5_view"
+        },
+        {
+          "command": "ks.unhide",
+          "when": "resourceExtname == .ks",
+          "group": "5_view"
+        },
+        {
+          "command": "ks.checkFiles",
+          "when": "resourceExtname == .ks",
+          "group": "6_tools"
+        }
+      ]
+    },
+    "fileIcons": {
+      "fileExtensions": {
+        ".ks": "images/ks-file-icon.png"
+      }
+    }
+  },
+  "scripts": {
+    "test": "node ./tests/commands.test.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {}
+}

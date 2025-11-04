@@ -1,0 +1,9 @@
+{
+    "name": "KS",
+    "scopeName": "source.ks",
+    "patterns": [
+        { "match": "\\b(import|export|ks|run|hide|unhide)\\b", "name": "keyword.control.ks" },
+        { "match": "\\b(true|false|null)\\b", "name": "constant.language.ks" },
+        { "match": "\".*?\"", "name": "string.quoted.double.ks" }
+    ]
+}
