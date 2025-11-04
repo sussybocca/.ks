@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Install KS</title>
+<style>
+body { font-family: sans-serif; padding: 20px; }
+button { margin: 10px 0; padding: 10px 15px; }
+</style>
+</head>
+<body>
+
+<h1>Install KS Language</h1>
+<p>Click below to download the full KS environment:</p>
+<button id="downloadBtn">Download hs-lang.zip</button>
+
+<script>
+// URLs of the files to include in the zip (hosted online)
+const files = [
+    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/backend/ks_engine.py', path: 'backend/ks_engine.py' },
+    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/backend/commands.py', path: 'backend/commands.py' },
+    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/frontend/ks_commands.py', path: 'frontend/ks_commands.py' },
+    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/frontend/ks_server.py', path: 'frontend/ks_server.py' },
+    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/examples/example1.ks', path: 'examples/example1.ks' }
+];
+
+document.getElementById("downloadBtn").addEventListener("click", async () => {
+    const JSZip = await import("https://cdn.jsdelivr.net/npm/jszip@3.11.1/dist/jszip.min.js");
+    const zip = new JSZip.default();
+
+    // Fetch each file
+    for (const file of files) {
+        try {
+            const res = await fetch(file.url);
+            const content = await res.text();
+            zip.file(file.path, content);
+        } catch (err) {
+            console.error(`Failed to fetch ${file.path}:`, err);
+        }
+    }
+
+    // Generate zip
+    zip.generateAsync({ type: "blob" }).then((content) => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(content);
+        link.download = "hs-lang.zip";
+        link.click();
+        alert("hs-lang.zip downloaded! You can now open it in Pythonista, Pydroid, or Termux to run .ks files.");
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.11.1/dist/jszip.min.js"></script>
+</body>
+</html>
