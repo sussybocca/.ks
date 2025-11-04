@@ -15,13 +15,13 @@ button { margin: 10px 0; padding: 10px 15px; }
 <button id="downloadBtn">Download hs-lang.zip</button>
 
 <script>
-// URLs of the files to include in the zip (hosted online)
+// URLs of the files to include in the zip (hosted in your GitHub repo)
 const files = [
-    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/backend/ks_engine.py', path: 'backend/ks_engine.py' },
-    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/backend/commands.py', path: 'backend/commands.py' },
-    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/frontend/ks_commands.py', path: 'frontend/ks_commands.py' },
-    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/frontend/ks_server.py', path: 'frontend/ks_server.py' },
-    { url: 'https://raw.githubusercontent.com/yourrepo/hs-lang/main/examples/example1.ks', path: 'examples/example1.ks' }
+    { url: 'https://raw.githubusercontent.com/sussybocca/.ks/main/backend/ks_engine.py', path: 'backend/ks_engine.py' },
+    { url: 'https://raw.githubusercontent.com/sussybocca/.ks/main/backend/commands.py', path: 'backend/commands.py' },
+    { url: 'https://raw.githubusercontent.com/sussybocca/.ks/main/frontend/ks_commands.py', path: 'frontend/ks_commands.py' },
+    { url: 'https://raw.githubusercontent.com/sussybocca/.ks/main/frontend/ks_server.py', path: 'frontend/ks_server.py' },
+    { url: 'https://raw.githubusercontent.com/sussybocca/.ks/main/examples/example1.ks', path: 'examples/example1.ks' }
 ];
 
 document.getElementById("downloadBtn").addEventListener("click", async () => {
